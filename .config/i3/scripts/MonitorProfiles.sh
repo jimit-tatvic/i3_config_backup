@@ -1,1 +1,1 @@
-/home/jimitchavda/.config/i3/scripts/monitor_profiles.sh
+monitor_profiles.sh

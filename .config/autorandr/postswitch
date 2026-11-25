@@ -28,6 +28,11 @@ if [[ -n "$active_outputs" && -n "$PRIMARY" ]]; then
     done
 fi
 
+# Restore windows and workspaces to their previous locations upon reconnecting external display (HDMI)
+if [[ -n "$active_outputs" && $(echo "$active_outputs" | wc -l) -gt 1 ]]; then
+    "$HOME/.config/i3/scripts/display_restore.py" --restore >/dev/null 2>&1 || true
+fi
+
 # Reload Polybar and Wallpaper via i3 session daemon (escapes systemd service cgroups)
 if ! i3-msg "exec --no-startup-id $HOME/.config/polybar/launch.sh" >/dev/null 2>&1; then
     nohup "$HOME/.config/polybar/launch.sh" >/dev/null 2>&1 &

@@ -1,1 +1,1 @@
-/home/jimitchavda/.config/i3/scripts/media_ctrl.sh
+media_ctrl.sh

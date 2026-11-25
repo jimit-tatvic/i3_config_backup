@@ -1,0 +1,19 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C caches
+*.o
+*.so
+
+# Editor & OS artifacts
+.DS_Store
+*.swp
+*.swo
+*~
+
+# Temporary or backup files
+*.bak
+*.bak_*
+*.backup.*

@@ -26,7 +26,7 @@ if command -v apt-get >/dev/null 2>&1; then
     sudo apt-get update -y
     sudo apt-get install -y \
         i3-wm i3status polybar rofi dunst picom feh xdotool jq playerctl \
-        autorandr brightnessctl pamixer pavucontrol network-manager \
+        autorandr brightnessctl pamixer pavucontrol network-manager redshift \
         flameshot swappy libnotify-bin kitty btop cava fastfetch curl wget rsync
 elif command -v pacman >/dev/null 2>&1; then
     echo -e "${YELLOW}Detected Arch Linux system...${RESET}"
@@ -60,6 +60,18 @@ for dir in i3 polybar rofi dunst picom wallust kitty autorandr swaync fastfetch 
     fi
 done
 
+if [ -f "$SCRIPT_DIR/.config/greenclip.toml" ]; then
+    echo "Installing greenclip configuration..."
+    cp "$SCRIPT_DIR/.config/greenclip.toml" "$CONFIG_DIR/greenclip.toml"
+fi
+
+if [ -d "$SCRIPT_DIR/.local/bin" ]; then
+    echo "Installing helper binaries to ~/.local/bin/..."
+    mkdir -p "$HOME/.local/bin"
+    cp -r "$SCRIPT_DIR/.local/bin/"* "$HOME/.local/bin/"
+    chmod +x "$HOME/.local/bin/"*
+fi
+
 # 4. Deploy Wallpapers
 echo -e "\n${BLUE}==> [3/5] Setting up wallpapers...${RESET}"
 mkdir -p "$WALLPAPER_DIR"
@@ -73,6 +85,7 @@ chmod -R +x "$CONFIG_DIR/i3/scripts" 2>/dev/null || true
 chmod -R +x "$CONFIG_DIR/polybar/scripts" 2>/dev/null || true
 chmod +x "$CONFIG_DIR/polybar/launch.sh" 2>/dev/null || true
 chmod +x "$CONFIG_DIR/autorandr/postswitch" 2>/dev/null || true
+chmod +x "$CONFIG_DIR/autorandr/preswitch" 2>/dev/null || true
 
 # 6. Apply initial colors and wallpaper
 echo -e "\n${BLUE}==> [5/5] Generating initial theme and color schemes...${RESET}"

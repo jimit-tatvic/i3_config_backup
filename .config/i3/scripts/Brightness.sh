@@ -1,1 +1,1 @@
-/home/jimitchavda/.config/i3/scripts/brightness.sh
+brightness.sh

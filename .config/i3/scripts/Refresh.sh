@@ -1,1 +1,1 @@
-/home/jimitchavda/.config/i3/scripts/refresh.sh
+refresh.sh

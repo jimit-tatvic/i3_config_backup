@@ -1,1 +1,1 @@
-/home/jimitchavda/.config/i3/scripts/quick_settings.sh
+quick_settings.sh

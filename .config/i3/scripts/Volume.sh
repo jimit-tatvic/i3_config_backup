@@ -1,1 +1,1 @@
-/home/jimitchavda/.config/i3/scripts/volume.sh
+volume.sh

@@ -1,1 +1,1 @@
-/home/jimitchavda/.config/i3/scripts/wallpaper_select.sh
+wallpaper_select.sh

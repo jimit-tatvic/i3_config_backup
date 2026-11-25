@@ -84,3 +84,6 @@ fi
 
 # 4. Launch hover detector daemon in background
 setsid "$HOME/.config/polybar/scripts/hover_drawer.sh" 200>&- </dev/null >/dev/null 2>&1 &
+
+# 5. Sync nightlight state with polybar
+setsid "$HOME/.config/i3/scripts/nightlight.sh" restore 200>&- </dev/null >/dev/null 2>&1 &

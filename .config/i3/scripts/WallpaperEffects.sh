@@ -1,1 +1,1 @@
-/home/jimitchavda/.config/i3/scripts/wallpaper_effects.sh
+wallpaper_effects.sh

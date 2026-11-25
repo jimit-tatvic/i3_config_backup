@@ -50,6 +50,7 @@ if command -v yad >/dev/null 2>&1; then
         "SUPER + Alt + R" "Refresh Desktop" "Reload bar, picom, dunst, i3" \
         "SUPER + Shift + R" "Restart i3" "In-place WM restart" \
         "SUPER + Shift + C" "Reload i3" "Reload configuration" \
+        "SUPER + Shift + Arrows" "Resize Window" "Shrink/Grow active window" \
         "SUPER + 1..10" "Workspaces" "Switch workspace 1 to 10" \
         "SUPER + Shift + 1..10" "Move Window" "Move active window to workspace"
 else
@@ -86,6 +87,7 @@ SUPER + Shift + S             Area Screenshot (Swappy)
 SUPER + L / Ctrl + Alt + L    Lock Screen
 Ctrl + Alt + P                Power Menu (Wlogout)
 SUPER + Alt + R               Refresh Polybar, Picom, i3
+SUPER + Shift + Arrows        Resize Window (Shrink/Grow)
 SUPER + Shift + R             Restart i3
 SUPER + Shift + C             Reload i3
 EOF

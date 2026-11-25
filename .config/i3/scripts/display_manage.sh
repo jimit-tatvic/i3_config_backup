@@ -26,6 +26,9 @@ rescue_workspaces() {
 
 case "$action" in
     "laptop"|"single")
+        # Save dual-monitor state before disabling external display
+        "$HOME/.config/i3/scripts/display_restore.py" --save >/dev/null 2>&1 || true
+
         # Explicitly turn off all disconnected or secondary outputs
         for out in $(xrandr | grep -E " (disconnected|connected)" | cut -d" " -f1); do
             if [[ "$out" != "$PRIMARY" ]]; then
@@ -50,6 +53,8 @@ case "$action" in
             notify-send -i "$iDIR/ja.png" "Display" "No external display found, using $PRIMARY"
         fi
         rescue_workspaces
+        # Restore windows and workspaces to their previous locations
+        "$HOME/.config/i3/scripts/display_restore.py" --restore >/dev/null 2>&1 || true
         i3-msg "exec --no-startup-id $HOME/.config/polybar/launch.sh" >/dev/null 2>&1 || true
         i3-msg "exec --no-startup-id $HOME/.config/i3/scripts/WallustFeh.sh --no-reload" >/dev/null 2>&1 || true
         ;;
@@ -63,6 +68,11 @@ case "$action" in
             xrandr --output "$out" --off 2>/dev/null || true
         done
         rescue_workspaces
+        # Restore windows and workspaces if dual monitors are active
+        active_cnt=$(xrandr --query 2>/dev/null | grep -c " connected " || echo 1)
+        if [[ "$active_cnt" -gt 1 ]]; then
+            "$HOME/.config/i3/scripts/display_restore.py" --restore >/dev/null 2>&1 || true
+        fi
         i3-msg "exec --no-startup-id $HOME/.config/polybar/launch.sh" >/dev/null 2>&1 || true
         i3-msg "exec --no-startup-id $HOME/.config/i3/scripts/WallustFeh.sh --no-reload" >/dev/null 2>&1 || true
         ;;

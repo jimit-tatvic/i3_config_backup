@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Autorandr Global Pre-Switch Hook for i3
+set -euo pipefail
+
+export DISPLAY="${DISPLAY:-:0}"
+if [[ -z "${XAUTHORITY:-}" ]]; then
+    export XAUTHORITY="/run/user/$(id -u)/gdm/Xauthority"
+    if [[ ! -f "$XAUTHORITY" ]]; then
+        export XAUTHORITY="$HOME/.Xauthority"
+    fi
+fi
+
+# If dual displays are currently active, capture the current state before switching
+if [[ -x "$HOME/.config/i3/scripts/display_restore.py" ]]; then
+    "$HOME/.config/i3/scripts/display_restore.py" --save >/dev/null 2>&1 || true
+fi

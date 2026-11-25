@@ -33,6 +33,8 @@ An ultra-refined, fully customized **i3wm** desktop environment on X11, meticulo
 | **Fastfetch** | `.config/fastfetch/` | Modern system information tool formatted for clean terminal display |
 | **Cava** | `.config/cava/` | Audio visualizer with Wallust template integration |
 | **Btop** | `.config/btop/` | High-fidelity interactive terminal system monitor |
+| **Greenclip** | `.config/greenclip.toml` | Roaming clipboard daemon configuration (1000 items history) |
+| **Helpers** | `.local/bin/` | System helper scripts (Bluetooth transport audio volume synchronizer) |
 
 ---
 
@@ -55,7 +57,9 @@ An ultra-refined, fully customized **i3wm** desktop environment on X11, meticulo
 - `Super + f` — Fullscreen Toggle
 - `Super + Space` — Toggle Floating Mode
 - `Super + h/j/k/l` or `Arrows` — Move Focus (Left / Down / Up / Right)
-- `Super + Shift + h/j/k/l` — Move Window (Left / Down / Up / Right)
+- `Super + Shift + Arrows` — Directional Window Resizing (Shrink / Grow active border)
+- `Super + Ctrl + Arrows` or `Super + Alt + Arrows` — Move Window (Left / Down / Up / Right)
+- `Super + r` — Dedicated Resize Mode (Directional arrows, Return/Escape to exit)
 - `Super + s` — Stacking Layout
 - `Super + w` — Tabbed Layout
 - `Super + g` — Split Layout Toggle
@@ -71,7 +75,8 @@ An ultra-refined, fully customized **i3wm** desktop environment on X11, meticulo
 ### 🎨 Ricing & Quick Tools
 - `Super + w` (Wallpaper Menu) — Select Wallpaper with visual preview
 - `Super + Shift + w` — Apply ImageMagick Wallpaper Effects
-- `Super + Alt + v` — Clipboard History (Greenclip)
+- `Super + n` — Toggle Night Light (Redshift RandR gamma toggle with Polybar IPC update)
+- `Super + Alt + v` — Clipboard History (Greenclip - 1000 items)
 - `Super + Alt + e` — Searchable Emoji Picker
 - `Super + Alt + c` — Quick Calculator
 - `Super + Shift + e` — Quick Settings Center

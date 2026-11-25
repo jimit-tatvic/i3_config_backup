@@ -1,1 +1,1 @@
-/home/jimitchavda/.config/i3/scripts/OverviewToggle.sh
+OverviewToggle.sh

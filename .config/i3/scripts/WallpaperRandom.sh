@@ -1,1 +1,1 @@
-/home/jimitchavda/.config/i3/scripts/wallpaper_random.sh
+wallpaper_random.sh

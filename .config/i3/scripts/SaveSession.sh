@@ -15,6 +15,9 @@ if command -v jq >/dev/null 2>&1 && command -v i3-msg >/dev/null 2>&1; then
             | "\(.window_properties.class)"
         ' 2>/dev/null | sort -u | while read -r CLASS; do
             if [[ -n "$CLASS" && "$CLASS" != "Polybar" && "$CLASS" != "Dunst" && "$CLASS" != "scratchpad" ]]; then
+                if [[ "$CLASS" =~ [Aa]ntigravity ]]; then
+                    CLASS="antigravity"
+                fi
                 echo "gtk-launch \"$CLASS\" 2>/dev/null || ${CLASS,,} &" >> "$SESSION_FILE"
                 echo "sleep 0.8" >> "$SESSION_FILE"
             fi

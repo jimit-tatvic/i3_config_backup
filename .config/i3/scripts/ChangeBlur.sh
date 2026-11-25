@@ -1,1 +1,1 @@
-/home/jimitchavda/.config/i3/scripts/change_blur.sh
+change_blur.sh

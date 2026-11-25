@@ -23,6 +23,7 @@ gaps outer 8
 smart_gaps on
 default_border pixel 2
 default_floating_border pixel 2
+floating_minimum_size 20 x 20
 hide_edge_borders smart
 
 # Theme Colors (Sourced from Wallust via ~/.config/i3/colors)
@@ -43,6 +44,7 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id killall -q picom; sleep 0.2; picom -b
 exec --no-startup-id greenclip daemon
 exec --no-startup-id ~/.config/i3/scripts/idle_handler.sh
+exec --no-startup-id ~/.config/i3/scripts/display_restore.py --daemon
 exec --no-startup-id ~/.local/bin/bt-volume-fix.sh
 exec --no-startup-id [ -f ~/.cache/i3_saved_session.sh ] && bash ~/.cache/i3_saved_session.sh
 
@@ -60,6 +62,7 @@ for_window [class="(?i)arandr"] floating enable
 for_window [class="(?i)gnome-system-monitor"] floating enable
 for_window [class="(?i)swappy"] floating enable
 for_window [class="(?i)yad"] floating enable
+for_window [class="(?i)tatvic-snip-desktop"] floating enable, border none
 for_window [title="(?i)KooL Quick Cheat Sheet"] floating enable
 for_window [title="(?i)i3wm Quick Cheat Sheet"] floating enable
 for_window [instance="dropdown_terminal"] floating enable, resize set 1150 680, move position center, move scratchpad
@@ -93,16 +96,17 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# Move Containers
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+# Resize Containers (Windows + Shift + Arrow - Directional Border Movement)
+bindsym $mod+Shift+Left resize grow left 20 px or 5 ppt; resize shrink right 20 px or 5 ppt
+bindsym $mod+Shift+Right resize shrink left 20 px or 5 ppt; resize grow right 20 px or 5 ppt
+bindsym $mod+Shift+Up resize grow up 20 px or 5 ppt; resize shrink down 20 px or 5 ppt
+bindsym $mod+Shift+Down resize shrink up 20 px or 5 ppt; resize grow down 20 px or 5 ppt
 
-bindsym $mod+Ctrl+Left move left 40px
-bindsym $mod+Ctrl+Down move down 40px
-bindsym $mod+Ctrl+Up move up 40px
-bindsym $mod+Ctrl+Right move right 40px
+# Move Containers (Windows + Ctrl + Arrow & Windows + Alt + Arrow)
+bindsym $mod+Ctrl+Left move left
+bindsym $mod+Ctrl+Down move down
+bindsym $mod+Ctrl+Up move up
+bindsym $mod+Ctrl+Right move right
 
 bindsym $mod+Mod1+Left move left
 bindsym $mod+Mod1+Down move down
@@ -164,10 +168,10 @@ bindsym --whole-window $mod+button5 exec --no-startup-id ~/.config/i3/scripts/wo
 # Resize Mode
 bindsym $mod+r mode "resize"
 mode "resize" {
-    bindsym Left resize shrink width 10 px or 10 ppt
-    bindsym Down resize grow height 10 px or 10 ppt
-    bindsym Up resize shrink height 10 px or 10 ppt
-    bindsym Right resize grow width 10 px or 10 ppt
+    bindsym Left resize grow left 20 px or 5 ppt; resize shrink right 20 px or 5 ppt
+    bindsym Right resize shrink left 20 px or 5 ppt; resize grow right 20 px or 5 ppt
+    bindsym Up resize grow up 20 px or 5 ppt; resize shrink down 20 px or 5 ppt
+    bindsym Down resize shrink up 20 px or 5 ppt; resize grow down 20 px or 5 ppt
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
@@ -238,7 +242,7 @@ bindsym $mod+Shift+o exec --no-startup-id ~/.config/i3/scripts/ZshChangeTheme.sh
 bindsym $mod+Ctrl+Mod1+b exec --no-startup-id polybar-msg cmd toggle
 bindsym $mod+Ctrl+b exec --no-startup-id ~/.config/polybar/launch.sh
 bindsym $mod+Shift+n exec --no-startup-id ~/.config/i3/scripts/notification_center.sh
-bindsym $mod+n exec --no-startup-id ~/.config/i3/scripts/Hyprsunset.sh toggle
+bindsym $mod+n exec --no-startup-id ~/.config/i3/scripts/nightlight.sh toggle
 
 # Visual Effects & Compositor Controls
 bindsym $mod+Shift+g exec --no-startup-id ~/.config/i3/scripts/GameMode.sh

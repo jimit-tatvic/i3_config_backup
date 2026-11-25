@@ -36,7 +36,7 @@ case "$choice" in
     *"Audio Mixer"*) pavucontrol & ;;
     *"Display Settings"*) arandr & ;;
     *"GameMode"*) "$sDIR/GameMode.sh" ;;
-    *"Night Light"*) "$sDIR/Hyprsunset.sh" toggle ;;
+    *"Night Light"*) "$sDIR/nightlight.sh" toggle ;;
     *"Window Blur"*) "$sDIR/ChangeBlur.sh" ;;
     *"Animations"*) "$sDIR/Animations.sh" ;;
     *"Global Theme"*) "$sDIR/ThemeChanger.sh" ;;
