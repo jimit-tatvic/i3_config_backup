@@ -90,7 +90,7 @@ An ultra-refined, fully customized **i3wm** desktop environment on X11, meticulo
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/jimitchavda/i3_config_backup.git ~/i3_config_backup
+git clone https://github.com/jimit-tatvic/i3_config_backup.git ~/i3_config_backup
 cd ~/i3_config_backup
 ```
 
